@@ -13,30 +13,27 @@ public class IndexController {
 
    @Autowired
     private VideoService videoService;
+
+    /**
+     * 分页接口
+     * @param page 总页数，默认1页
+     * @param size 每页记录数，默认10条
+     * @return
+     */
    @GetMapping("page")
-    public Object findAll(){
+    public Object findAll(@RequestParam(value = "page",defaultValue = "1")int page,
+                          @RequestParam(value = "size",defaultValue = "10")int size){
        return videoService.findAll();
    }
+
+    /**
+     * 根据id查询
+     * @param videoid
+     * @return
+     */
    @GetMapping("find_by_id")
-    public Object findById(int id){
-       return videoService.findById(id);
-   }
-   @DeleteMapping("del_by_id")
-    public int delById(int id){
-       return videoService.delete(id);
-   }
-   @PutMapping("update_by_id")
-    public int updateById(int id,String title){
-       Video video = new Video();
-       video.setId(id);
-       video.setTitle(title);
-       return videoService.update(video);
-   }
-   @PostMapping("save")
-    public Object save(String title){
-       Video video = new Video();
-       video.setTitle(title);
-       return videoService.save(video);
+    public Object findById(@RequestParam(value = "video_id",required = true)int videoid){
+       return videoService.findById(videoid);
    }
 
 }

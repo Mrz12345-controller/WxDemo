@@ -12,4 +12,6 @@ public interface VideoService {
     int delete(int id);
 
     Video findById(int id);
+
+    int save(Video video);
 }

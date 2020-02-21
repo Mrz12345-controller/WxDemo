@@ -30,4 +30,11 @@ public class VideoServiceImpl implements VideoService {
     public Video findById(int id) {
         return videoMapper.findById(id);
     }
+
+    @Override
+    public int save(Video video) {
+       int row = videoMapper.save(video);
+       System.out.println("id:"+video.getId());
+        return row;
+    }
 }

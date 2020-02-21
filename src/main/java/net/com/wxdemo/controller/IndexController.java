@@ -32,5 +32,11 @@ public class IndexController {
        video.setTitle(title);
        return videoService.update(video);
    }
+   @PostMapping("save")
+    public Object save(String title){
+       Video video = new Video();
+       video.setTitle(title);
+       return videoService.save(video);
+   }
 
 }

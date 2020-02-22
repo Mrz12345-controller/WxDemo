@@ -1,6 +1,7 @@
 package net.com.wxdemo.mapper;
 
 import net.com.wxdemo.domain.Video;
+import net.com.wxdemo.provider.VideoProvider;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -9,7 +10,8 @@ public interface VideoMapper {
     @Select("select * from video")
     List<Video> findAll();
 
-    @Update("update video set title=#{title}where id=#{id}")
+//    @Update("update video set title=#{title}where id=#{id}")
+    @UpdateProvider(type = VideoProvider.class,method = "updateVideo")
     int update(Video video);
 
     @Delete("delete from video where id=#{id}")
